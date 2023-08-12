@@ -17,9 +17,10 @@ int main(void)
 		if (digit <= 9)
 		{
 			putchar(',');
-		}	putchar(' ');
+			putchar(' ');
+		}
+		digit++;
 	}
 	putchar('\n');
-
 	return (0);
 }
