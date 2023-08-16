@@ -3,13 +3,13 @@
 /**
  * add - add two instegers
  *
- * @a: first input
- * @b: secound input
+ * @a: int to be added to b
+ * @b: int to added to a
  *
  * Return: sum of a % b
  */
 
-void add(int a, int b)
+int add(int a, int b)
 {
 	int c;
 
