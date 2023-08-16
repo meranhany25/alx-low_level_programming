@@ -9,9 +9,10 @@
  * Return: sum of a % b
  */
 
-int add(int a, int b)
+void add(int a, int b)
 {
-	int sum = a + b;
+	int c;
 
-	return (sum);
+	c = a + b;
+	return (c);
 }
