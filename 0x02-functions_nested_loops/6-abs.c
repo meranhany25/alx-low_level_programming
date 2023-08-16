@@ -7,12 +7,8 @@
  */
 int _abs(int c)
 {
-	if (c < 0)
-	{
-	int abs_val;
+	if  (n < 0)
 
-	abs_val = c * -1;
-	return (abs_val);
-	}
-	return (c);
+		n = (-1) * n;
+	return (n);
 }
