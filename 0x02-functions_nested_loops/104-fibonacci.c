@@ -32,6 +32,7 @@ int numLength(int num)
  *
  * Return: Always 0 (Success)
  */
+
 int main(void)
 {
 	int count, initial0s;
@@ -41,7 +42,7 @@ int main(void)
 	{
 		if (f1o > 0)
 			printf("%lu", f1o);
-		initial0s = numLength(mx) - 1 - numLenght(f1);
+		initial0s = numLength(mx) - 1 - numLength(f1);
 
 		while (f1o > 0 && initial0s > 0)
 		{
