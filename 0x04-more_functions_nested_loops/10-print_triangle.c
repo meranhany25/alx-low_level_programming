@@ -4,12 +4,12 @@
  * print_triangle - entry point
  * Description: i prints diagonals
  * @size: size of triangle
- * Return: void
+ * Return: empty
  */
 
 void print_triangle(int size)
 {
-	int row, hashes, spaces;
+	int x, y, z;
 
 	if (size <= 0)
 	{
@@ -17,15 +17,15 @@ void print_triangle(int size)
 	}
 	else
 	{
-		for (row = 1; row <= size; row++)
+		for (x = 1; x <= size; x++)
 		{
-			for (spaces = size - row; spaces >= 1; spaces++)
+			for (y = size - x; y >= 1; y--)
 			{
-				_putchar(' ');
+				_putchar(32);
 			}
-			for (hashes = 1; hashes <= row; hashes++)
+			for (z = 0; z <= x; z++)
 			{
-				_putchar('#');
+				_putchar(35);
 			}
 			_putchar('\n');
 		}
