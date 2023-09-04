@@ -1,52 +1,49 @@
 #include "main.h"
 
 /**
- * _strlen - find length  of string
- * @s: string
- * Return: int
+ * _strlen - count length of a string.
+ * @str: pointer to string.
+ * Return: length of @str.
  */
 
-int _strlen(char *s)
+int _strlen(char *str)
 {
-	int size = 0;
+	int i;
 
-	for (; s[size] != '\0'; size++)
-	;
-	return (size);
+	i = 0;
+	if (!str)
+		return (i);
+	while (str[i])
+		i++;
+	return (i);
 }
 
 /**
- * *str_concat - concatenates two strings
- * @s1: string 1
- * @s2: string
- * Return: pointer
+ * str_concat - concatenates two strings.
+ * @s1: 1st string.
+ * @s2: 2nd string.
+ * Return: return pointer to the newly allocated space in memory
+ * which contains the contents of @s1, followed by the contents of @s2.
+ * NULL on failure.
  */
 
 char *str_concat(char *s1, char *s2)
 {
-	int size1, size2, i;
+	int len;
+	int i, j;
+	char *new;
 
-	char *m;
-
-	if (s1 == NULL)
-		s1 = "\0";
-	if (s2 == NULL)
-		s2 = "\0";
-
-	size1 = _strlen(s1);
-	size2 = _strlen(s2);
-	m = malloc((size1 + size2) * sizeof(char) + 1);
-	if (m == 0)
-		return (0);
-
-	for (i = 0; i <= size1 + size2; i++)
-	{
-
-		if (i < size1)
-			m[i] = s1[i];
-		else
-			m[i] = s2[i - size1];
-	}
-	m[i] = '\0';
-	return (m);
+	i = 0;
+	j = 0;
+	len = _strlen(s1) + _strlen(s2);
+	new = malloc(sizeof(char) * len + 1);
+	if (!new)
+		return (NULL);
+	while (s1 && s1[i])
+		new[j++] = s1[i++];
+	i = 0;
+	while (s2 && s2[i])
+		new[j++] = s2[i++];
+	new[j] = '\0';
+	return (new);
 }
