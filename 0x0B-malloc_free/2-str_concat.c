@@ -1,36 +1,52 @@
 #include "main.h"
 
 /**
- * str_concat - Concatenates two strings
- * @s1: The string to be concatenated upon
- * @s2: The string to be concatenated to s1
- *
+ * _strlen - find length  of string
+ * @s: string
  * Return: int
  */
+
+int _strlen(char *s)
+{
+	int size = 0;
+
+	for (; s[size] != '\0'; size++)
+	;
+	return (size);
+}
+
+/**
+ * *str_concat - concatenates two strings
+ * @s1: string 1
+ * @s2: string
+ * Return: pointer
+ */
+
 char *str_concat(char *s1, char *s2)
 {
-	char *concat_str;
-	int i, concat_i = 0, l = 0;
+	int size1, size2, i;
+
+	char *m;
 
 	if (s1 == NULL)
-		s1 = "";
-
+		s1 = "\0";
 	if (s2 == NULL)
-		s2 = "";
+		s2 = "\0";
 
-	for (i = 0; s1[i] || s2[i]; i++)
-		len++;
+	size1 = _strlen(s1);
+	size2 = _strlen(s2);
+	m = malloc((size1 + size2) * sizeof(char) + 1);
+	if (m == 0)
+		return (0);
 
-	concat_str = malloc(sizeof(char) * l);
+	for (i = 0; i <= size1 + size2; i++)
+	{
 
-	if (concat_str == NULL)
-		return (NULL);
-
-	for (i = 0; s1[i]; i++)
-		concat_str[concat_i++] = s1[i];
-
-	for (i = 0; s2[i]; i++)
-		concat_str[concat_i++] = s2[i];
-
-	return (concat_str);
+		if (i < size1)
+			m[i] = s1[i];
+		else
+			m[i] = s2[i - size1];
+	}
+	m[i] = '\0';
+	return (m);
 }
