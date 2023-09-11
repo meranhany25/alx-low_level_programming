@@ -1,83 +1,70 @@
 #include <stdio.h>
 #include "dog.h"
 
-int _strlen(char *str);
-char *_strcopy(char *dest, char *src);
-dog_t *new_dog(char *name, float age, char *owner);
-
 /**
- * _strlen - Finds the length of a string.
- * @str: The string to be measured.
- *
- * Return: The length of the string.
+ * _strlen - a function that gets a length of string
+ * @str: the string to get the length
+ * Return: length of @str
  */
-int _strlen(char *str)
+
+int _strlen(const char *str)
 {
-	int len = 0;
+	int length = 0;
 
 	while (*str++)
-		len++;
-
-	return (len);
+		length++;
+	return (length);
 }
 
 /**
- * _strcopy - Copies a string pointed to by src, including the
- *            terminating null byte, to a buffer pointed to by dest.
- * @dest: The buffer storing the string copy.
- * @src: The source string.
- *
- * Return: The pointer to dest.
+ * _strcopy - a function that returns @dest with a copy of a string from @src
+ * @src: string to copy
+ * @dest: copy string to here
+ * Return: @dest
  */
+
 char *_strcopy(char *dest, char *src)
 {
-	int index = 0;
-
-	for (index = 0; src[index]; index++)
-		dest[index] = src[index];
-
-	dest[index] = '\0';
-
+	int i;
+	for (i = 0; src[i]; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
 	return (dest);
 }
 
 /**
- * new_dog - Creates a new dog.
- * @name: The name of the dog.
- * @age: The age of the dog.
- * @owner: The owner of the dog.
- *
- * Return: The new struct dog.
+ * new_dog - a function that creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: dog owner
+ * Return: struct pointer dog NULL if function fails
  */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *doggo;
-
-	if (name == NULL || age < 0 || owner == NULL)
+	dog_t *dog;
+	/*if name and owner are empty ande age is less than zero return null*/
+	if (!name || age < 0 || !owner)
 		return (NULL);
-
-	doggo = malloc(sizeof(dog_t));
-	if (doggo == NULL)
+	dog = (dog_t *) malloc(sizeof(dog_t));
+	if (dog == NULL)
 		return (NULL);
-
-	doggo->name = malloc(sizeof(char) * (_strlen(name) + 1));
-	if (doggo->name == NULL)
+	dog ->name = malloc(sizeof(char)* (_strlen(name) + 1));
+	if ((*dog).name == NULL)
 	{
-		free(doggo);
+		free(dog);
 		return (NULL);
 	}
-
-	doggo->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
-	if (doggo->owner == NULL)
+	dog->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+	if ((*dog).owner == NULL)
 	{
-		free(doggo->name);
-		free(doggo);
+		free(dog->name);
+		free(dog);
 		return (NULL);
 	}
+	dog->name = strcopy(dog->name, name);
+	dog->age = age;
+	dog->owner = _strcopy(dog->owner, owner);
 
-	doggo->name = _strcopy(doggo->name, name);
-	doggo->age = age;
-	doggo->owner = _strcopy(doggo->owner, owner);
-
-	return (doggo);
+	return (dog);
 }
