@@ -6,7 +6,7 @@
  * main - check the code for the school students
  * @argc: the number of argc
  * @argv: argument vector
- * Return: Always 0.
+ * Return: 0
  */
 
 int main(int argc, char **argv)
