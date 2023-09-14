@@ -23,3 +23,4 @@ int main(int argc, char **argv)
 		printf("%02hhx%s", *p++, b ? " " : "\n");
 	return (0);
 }
+
