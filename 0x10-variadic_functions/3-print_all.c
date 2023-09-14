@@ -40,11 +40,11 @@ void print_all(const char * const format, ...)
 	int i = 0, j;
 	char *separator = "";
 	va_list ap;
-	tokend_t tokens[] = {
+	tokend_t token[] = {
 		{"c", format_char},
 		{"i", format_int},
-		{"f", format_float},
-		{"s", format_string},
+		{"f", format_int},
+		{"s", fprmat_string},
 		{NULL, NULL}
 	};
 
